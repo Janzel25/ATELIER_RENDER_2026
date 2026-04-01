@@ -1,16 +1,7 @@
-variable "render_api_key" {
-  type      = string
-  sensitive = true
-}
-
-variable "render_owner_id" {
+variable "repo_url" {
   type = string
 }
 
-variable "image_url" {
-  type = string
-}
-
-variable "image_tag" {
+variable "database_url" {
   type = string
 }

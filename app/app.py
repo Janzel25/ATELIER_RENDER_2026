@@ -22,3 +22,7 @@ def info():
         "student": "VOTRE_NOM",
         "version": "v1"
     }
+
+@app.route("/env")
+def env():
+    return {"env": os.getenv("ENV")}

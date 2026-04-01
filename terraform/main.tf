@@ -34,3 +34,17 @@ env_vars = {
   }
 }
 }
+
+Adminer
+resource "render_web_service" "adminer" {
+  name   = "adminer"
+  plan   = "free"
+  region = "frankfurt"
+
+  runtime_source = {
+    image = {
+      image_url = "adminer"
+      tag       = "latest"
+    }
+  }
+}

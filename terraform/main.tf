@@ -12,30 +12,28 @@ provider "render" {
   owner_id = var.render_owner_id
 }
 
-variable "github_actor" {
-  description = "GitHub username"
-  type        = string
-}
-
+# 🔥 Flask depuis ton repo GitHub
 resource "render_web_service" "flask_app" {
-  name   = "flask-render-iac-${var.github_actor}"
+  name   = "flask-render-iac"
   plan   = "free"
   region = "frankfurt"
 
   runtime_source = {
-    image = {
-      image_url = var.image_url
-      tag       = var.image_tag
+    repo = {
+      repo_url   = var.repo_url
+      branch     = "main"
+      root_dir   = "backend"
+    }
   }
-}
-env_vars = {
-  ENV = {
-    value = var.database_url
+
+  env_vars = {
+    DATABASE_URL = {
+      value = var.database_url
+    }
   }
-}
 }
 
-Adminer
+#  Adminer
 resource "render_web_service" "adminer" {
   name   = "adminer"
   plan   = "free"
